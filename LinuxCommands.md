@@ -2,19 +2,19 @@
 
 Count files in folder using list (ls) and word count (wc)
 
-```{bash eval=FALSE, include=TRUE}
+```
 ls /path | wc -l
 ```
 
 Check folder size (du)
 
-```{bash eval=FALSE, include=TRUE}
+```
 du -sh /path
 ```
 
 Copy files or folder from server using scp (-r copy folder)
 
-```{bash eval=FALSE, include=TRUE}
+```
 # scp -r [FROM:PATH] [TO:PATH]
 
 scp -r username@192.168.0.1:/path/ /path
@@ -32,7 +32,7 @@ echo $(zcat *.fastq.gz|wc -l)/4|bc
 
 Set location and run nested loop example
 
-```{bash eval=FALSE, include=TRUE}
+```
 #!/bin/bash
 
 inp_loc="/Users/path"
@@ -55,20 +55,20 @@ https://samtools.github.io/bcftools/bcftools.html#view
 
 View VCF file
 
-```{bash eval=FALSE, include=TRUE}
+```
 bcftools view file.vcf.gz
 ```
 
 Extract specific chromosome data
 
-```{bash eval=FALSE, include=TRUE}
+```
 bcftools view file.vcf.gz --regions [CHROM NAME] > output.vcf
 
 bgzip output.vcf
 ```
 
 Filter on minor allele frequency MAF 
-```{bash eval=FALSE, include=TRUE}
+```
 bcftools view -q 0.05:minor pop.vcf.gz > popMAF.vcf
 ```
 
@@ -76,7 +76,7 @@ bcftools view -q 0.05:minor pop.vcf.gz > popMAF.vcf
 
 Merge VCF files
 
-```{bash eval=FALSE, include=TRUE}
+```
 ls *.vcf.gz > merge.txt
 
 bcftools merge -l merge.txt -0 -Oz -o pop.vcf.gz
@@ -87,7 +87,7 @@ bcftools merge -l merge.txt -0 -Oz -o pop.vcf.gz
 
 View per contig stats (SNPs)
 
-```{bash eval=FALSE, include=TRUE}
+```
 #multi loci file
 bcftools index -s input.vcf.gz
 
@@ -97,7 +97,7 @@ bcftools index -n input.vcf.gz
 
 Create VCF index files
 
-```{bash eval=FALSE, include=TRUE}
+```
 bcftools index file.vcf.gz
 ```
 
@@ -106,13 +106,13 @@ bcftools index file.vcf.gz
 
 Create reference sequence dictionary
 
-```{bash eval=FALSE, include=TRUE}
+```
 java -jar /home/jhetzler/tools/picard/picard.jar CreateSequenceDictionary R=../ref/reference.fasta O=../ref/reference.dict
 ```
 
 Create index files for vcf
 
-```{bash eval=FALSE, include=TRUE}
+```
 gatk IndexFeatureFile -I A1.vcf.gz
 ```
 
@@ -120,6 +120,6 @@ Create an alternative reference by combining a fasta with a vcf.
 
 https://gatk.broadinstitute.org/hc/en-us/articles/360037594571-FastaAlternateReferenceMaker
 
-```{bash eval=FALSE, include=TRUE}
+```
 gatk FastaAlternateReferenceMaker -R /home/jhetzler/MiSeqOSL/ref/reference.fasta -O A1_FARM.fasta -V A1.vcf.gz
 ```
