@@ -1,14 +1,3 @@
----
-title: "Linux Commands"
-author: "Jørgen Hetzler"
-date: '2022-03-15'
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ## Basic Linux commands
 
 Count files in folder using list (ls) and word count (wc)
