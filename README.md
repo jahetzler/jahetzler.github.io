@@ -8,7 +8,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 Most used linux commands for bioinformatics
 
-- [Linux Commands](LinuxCommands.md)
+- [Linux Commands](LinuxCommands.Rmd)
 
 ### Markdown
 
