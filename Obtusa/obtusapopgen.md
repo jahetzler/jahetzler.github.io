@@ -4,7 +4,6 @@
 
 Keep individual ID and strand direction, discard sequence ID and direction ID
 
-
 ```
 id_loc="/Users/hetzler/Amphipod/MiSeq/fastQ/"
 
@@ -43,6 +42,7 @@ cutadapt \
 From the MiSeq sequences trim COI and 18S primers from all fastq files.
 
 Before running BASH script conda environment has to be loaded for cutadat: conda activate cutadaptenv
+
 
 ```
 #run first: conda activate cutadaptenv
@@ -97,6 +97,7 @@ Using bowtie2 to map reads to reference sequence.
 How to manipulate sam/bam files:
 https://medium.com/@shilparaopradeep/samtools-guide-learning-how-to-filter-and-manipulate-with-sam-bam-files-2c28b25d29e8
 
+#### Script map.sh
 ```
 inp_loc="/Users/hetzler/Amphipod/MiSeq/trimmed"
 out_loc="/Users/hetzler/Amphipod/mappedReads"
@@ -174,6 +175,8 @@ ls calls_*.vcf.gz > merge.txt
 
 bcftools merge -l merge.txt -0 -Oz -o pop.vcf.gz
 
+bcftools merge -m indels -l merge.txt -0 -Oz -o indel.vcf.gz
+
 bcftools annotate -x INFO,^FORMAT/GT pop.vcf.gz -Oz -o popAno.vcf.gz
 ```
 
@@ -213,8 +216,89 @@ population genomics analysis
 ```
 gzip pop.geno
 
-popgenWindows.py -g pop.geno.gz -o div_stat.csv -f phased -w 10000 -m 5 -s 25000 -p SAL -p SKJ --popsFile pop_file --writeFailedWindow
+popgenWindows.py -g pop.geno.gz -o div_stat.csv -f phased -w 1500 -m 5 -s 25000 -p SAL -p SKJ --popsFile pop_file --writeFailedWindow
 ```
+
+#### Multifasta from consensus files.
+
+https://samtools.github.io/bcftools/howtos/consensus-sequence.html
+
+__NB: try to normalized indels and filter calls__
+
+Create consensus files from reference fasta and indexed VCF file
+
+```
+#!/bin/bash
+set_loc="/home/jhetzler/MiSeqOSL/VC"
+
+cd $set_loc
+
+for i in $(eval echo {A..D}); do
+  for x in {1..5}; do
+cat /home/jhetzler/MiSeqOSL/ref/reference.fasta | bcftools consensus -s ${i}${x} ${i}${x}.vcf.gz > multi/${i}${x}.fa
+  done
+done
+```
+
+Add prefix of fasta headers
+````
+#!/bin/bash
+set_loc="/home/jhetzler/MiSeqOSL/VC"
+cd $set_loc
+
+for i in $(eval echo {A..D}); do
+  for x in {1..50}; do
+        perl -pi -e "s/^>/>${i}${x}_/g" multi/${i}${x}.fa
+  done
+done
+```
+
+Add suffix of fasta headers
+````
+#!/bin/bash
+set_loc="/home/jhetzler/MiSeqOSL/VC"
+cd $set_loc
+
+for i in $(eval echo {A..D}); do
+  for x in {1..50}; do
+        perl -pi -e 's/^(>.*)$/$1-'$i''$x'/g' multi/${i}${x}.fa
+  done
+done
+```
+
+create multi.fasta file from fasta files
+```
+cat *.fa > multi.fas
+```
+
+separate multifasta files
+
+```
+#!/bin/bash
+
+while read line ; do
+  if [ ${line:0:1} == ">" ] ; then
+    filename=$(echo "$line" | cut -d "_" -f1 | tr -d ">")
+    touch ./"$filename".fasta
+    echo "$line" >> ./"${filename}".fasta
+  else
+    echo "$line" >> ./"${filename}".fasta
+  fi
+done < $1
+```
+
+
+Masked fasta???
+
+````
+1. Call variants.
+
+2. Identify positions with nocalls (say, by emitting all sites) and convert to a BED:
+
+grep "\./\." [YOUR_VCF] | awk '{OFS="\t"; if ($0 !~ /\#/); print $1, $2-1, $2}' > [YOUR_FILTERED_BED]
+3. Use BEDtools' maskfasta.
+```
+
 
 ## Fasta Alternate Reference Maker
 
