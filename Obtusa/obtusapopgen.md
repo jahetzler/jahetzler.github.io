@@ -4,18 +4,18 @@ The amphipod Orchomenella obtusa was sampled in Saltenfjorden and in Skjerstadfj
 
 ## Programs used
 
-FastQC    [link to program](https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc) [link to manual](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/)
-MultiQC   [link to program](https://multiqc.info/) [link to manual](https://multiqc.info/docs/)
-cutadapt  [link to program](https://bioconda.github.io/recipes/cutadapt/README.html) [link to manual](https://cutadapt.readthedocs.io/en/stable/guide.html)
-bowtie2   [link to program](https://sourceforge.net/projects/bowtie-bio/files/bowtie2/) [link to manual](http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml)
-BCFtools  [link to program](http://www.htslib.org/download/) [link to manual](https://samtools.github.io/bcftools/bcftools.html)
+FastQC    [link to program](https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc) [link to manual](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/). 
+MultiQC   [link to program](https://multiqc.info/) [link to manual](https://multiqc.info/docs/). 
+cutadapt  [link to program](https://bioconda.github.io/recipes/cutadapt/README.html) [link to manual](https://cutadapt.readthedocs.io/en/stable/guide.html). 
+bowtie2   [link to program](https://sourceforge.net/projects/bowtie-bio/files/bowtie2/) [link to manual](http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml). 
+BCFtools  [link to program](http://www.htslib.org/download/) [link to manual](https://samtools.github.io/bcftools/bcftools.html). 
 
 
 ## Trimming and Quality Control
-Original data 
+Original data. 
 [MultiQC orignal data](multiqc_report.html)
 
-Adapter trimmed
+Adapter trimmed. 
 [MultiQC trimmed data](multiqc_report_trm.html)
 
 ### Rename sequence file names for easier parsing in later steps
