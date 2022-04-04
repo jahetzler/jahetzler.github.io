@@ -171,7 +171,7 @@ ggplot(counts, aes(factor(ID), count, fill = gene)) +
   facet_wrap(~as.factor(counts$gene) + as.factor(counts$site), scales = "free")
 ```
 
-[map count](Obtusa/map_counts.png)
+[map count](map_counts.png)
 
 ### Sort and convert from .sam to .bam
 
