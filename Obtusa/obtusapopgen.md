@@ -172,6 +172,7 @@ ggplot(counts, aes(factor(ID), count, fill = gene)) +
 ```
 
 ![map count](map_counts.png)
+*figure 1: 7 individuals with <100 mapped reads, mean read count 18S: 14469, mean read count COI: 24376. with group mean varying between 11979 (18S site A) to 28786 (COI site D)*
 
 ### Sort and convert from .sam to .bam
 
@@ -190,11 +191,11 @@ for i in $(eval echo {A..D}); do
 done
 ```
 
-#### variant calling
+## variant calling
 
-Call variants from mapped reads using bcftools
+With bcftools we identify variants from the sequence data, for our analysis we are after Single Nucleotide Variant (SNV). Other types of variants called by the software include MNP (adjacent SNPs) and indels, these are not included in further analysis.
 
-never BCFtools [mpileup] sets maximum number of reads per input file set to -d 250, this can be set higher to include more reads. Previous limit was set to 8000.
+Note: The newer version of BCFtools [mpileup] sets maximum number of reads per input file set to -d 250, this can be set higher to include more reads. Previous limit was set to 8000.
 
 ```
 ref_file="/Users/hetzler/Amphipod/referenceSeq/reference.fasta"
@@ -242,7 +243,7 @@ bcftools merge -m indels -l merge.txt -0 -Oz -o indel.vcf.gz
 
 bcftools annotate -x INFO,^FORMAT/GT pop.vcf.gz -Oz -o popAno.vcf.gz
 ```
-
+54 SNPs (7 from multiallelic sites) and 1 indel were retrived from filtered sequences with bcftools. 
 
 ## Population Genetics Window analysis
 
