@@ -1,22 +1,18 @@
 ## About the data
 
-The amphipod Orchomenella obtusa was sampled in Saltenfjorden and in Skjerstadfjorden. The sampling location were equidistantly spaced, with two sampling locations in each fjord, 50 amphipods from each location were sampled and sequenced for the COI and 18S gene on Illumina MiSeq sequencer. 
+This report explores the population structure and connectivity of the mesopelagic savaging amphipod Orchomenella obtusa between two connecting fjord systems (Saltenfjorden, Skjerstadfjorden). The fjord system is connected through Saltstraumen, a 40m deep sill where tidal forces transfer large water masses between the two fjords. O. obtusa were sampled at four equidistant locations with two stations per fjord. 50 individuals from each station were sequenced on Illumina MiSeq for amplicons of mtDNA COI and 18S rRNA.
+
 
 ## Programs used
 
-FastQC    [link to program](https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc) [link to manual](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/)<br/>
-MultiQC   [link to program](https://multiqc.info/) [link to manual](https://multiqc.info/docs/)<br/>
-cutadapt  [link to program](https://bioconda.github.io/recipes/cutadapt/README.html) [link to manual](https://cutadapt.readthedocs.io/en/stable/guide.html)<br/>
-bowtie2   [link to program](https://sourceforge.net/projects/bowtie-bio/files/bowtie2/) [link to manual](http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml)<br/>
-BCFtools  [link to program](http://www.htslib.org/download/) [link to manual](https://samtools.github.io/bcftools/bcftools.html)
+FastQC    [Program](https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc) - [Manual](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/)<br/>
+MultiQC   [Program](https://multiqc.info/) - [Manual](https://multiqc.info/docs/)<br/>
+cutadapt  [Program](https://bioconda.github.io/recipes/cutadapt/README.html) - [Manual](https://cutadapt.readthedocs.io/en/stable/guide.html)<br/>
+bowtie2   [Program](https://sourceforge.net/projects/bowtie-bio/files/bowtie2/) - [Manual](http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml)<br/>
+BCFtools  [Program](http://www.htslib.org/download/) - [Manual](https://samtools.github.io/bcftools/bcftools.html)
 
 
 ## Trimming and Quality Control
-Original data<br/>
-[MultiQC orignal data](multiqc_report.html)
-
-Adapter trimmed<br/>
-[MultiQC trimmed data](multiqc_report_trm.html)
 
 ### Rename sequence file names for easier parsing in later steps
 
@@ -39,12 +35,12 @@ done
 
 ### Trim adapters with cutadapt
 
-From the MiSeq sequences trim COI and 18S primers from one fastq file.
+Trim amplicon adapters from the fastq files, this removes any possibilities for point mutations from degenerated PCR primers to be included in the further analysis of the data. 
 
-Run before BASH scirpt: conda activate cutadaptenv
+Trim COI and 18S primers from one fastq file.
 
 ```
-#run first: conda activate cutadaptenv
+#Activate Conda environment before running: conda activate cutadaptenv
 
 cutadapt \
 -g CHACWAAYCATAAAGATATYGG \
@@ -57,11 +53,9 @@ cutadapt \
 
 Trim COI and 18S primers from multiple fastq files.
 
-Before running BASH script conda environment has to be loaded for cutadat: conda activate cutadaptenv
-
 
 ```
-#run first: conda activate cutadaptenv
+#Activate Conda environment before running: conda activate cutadaptenv
 
 
 inp_loc="/Users/hetzler/Amphipod/MiSeq/fastq"
@@ -84,11 +78,15 @@ done
 ```
 
 Read counts for all samples:
+
+
 ```
  echo $(zcat *.fastq.gz|wc -l)/4|bc
 ````
 
-9820292 reads
+All reads are kept after trimming for amplicon adater <br/>
+Before: 9820292 reads <br/>
+After: 9820292 reads 
 
 ### create fastQC reports for multiQC
 
@@ -98,19 +96,25 @@ set_loc="/Users/hetzler/Amphipod/MiSeq/trmFastQ"
 cd $set_loc
 
 find . -name "*.fastq" | xargs fastqc 
+
+multiqc .
 ```
 
-Run multiqc . for multiQC report
+Original data<br/>
+[MultiQC orignal data](multiqc_report.html)
+
+Adapter trimmed<br/>
+[MultiQC trimmed data](multiqc_report_trm.html)
 
 ## Sequence mapping
 
-Map sequenced files to reference genes.
-Reference genes mined from HTS denovo assembly of Orchomenella obtusa.
+The amplicon sequences are mapped to their reference genes using the bowtie2 alignment tool.<br/>
+Reference genes used in this analysis were exracted a denovo assembly of Orchomenella obtusa from a WGS run for the [High throughput sequencing of non-model organisms](https://www.nord.no/no/aktuelt/kalender/Sider/PhD-course-High-throughput-sequencing-of-non-model-organisms-DR425F-2017.aspx) course at Nord university.
 
 ### Create reference sequence index
 Create index reference files for bowtie2 alignment.
 
-reference.fasta contains COI and 18S reference sequence. 
+[reference.fasta](reference.fasta) contains COI and 18S reference sequence. 
 
 ```
 bowtie2-build "/Users/hetzler/Amphipod/referenceSeq/reference.fasta" "/Users/hetzler/Amphipod/referenceSeq/reference"
@@ -118,10 +122,9 @@ bowtie2-build "/Users/hetzler/Amphipod/referenceSeq/reference.fasta" "/Users/het
 
 ### Map reads to reference sequence
 
-Using bowtie2 to map reads to reference sequence. 
+Map reads to reference sequence using bowtie2. 
 
-How to manipulate sam/bam files:
-https://medium.com/@shilparaopradeep/samtools-guide-learning-how-to-filter-and-manipulate-with-sam-bam-files-2c28b25d29e8
+[How to manipulate sam/bam files](https://medium.com/@shilparaopradeep/samtools-guide-learning-how-to-filter-and-manipulate-with-sam-bam-files-2c28b25d29e8)
 
 
 ```
