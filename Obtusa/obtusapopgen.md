@@ -12,8 +12,11 @@ BCFtools  [link to program] [link to manual]
 
 
 ## Trimming and Quality Control
-
+Original data 
 MultiQC run: [multiqc_report.html]
+
+Adapter trimmed
+MultiQC run: [multiqc_report_trm.html]
 
 ### Rename sequence file names for easier parsing in later steps
 
