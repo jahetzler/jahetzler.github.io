@@ -124,8 +124,6 @@ bowtie2-build "/Users/hetzler/Amphipod/referenceSeq/reference.fasta" "/Users/het
 
 Map reads to reference sequence using bowtie2. 
 
-[How to manipulate sam/bam files](https://medium.com/@shilparaopradeep/samtools-guide-learning-how-to-filter-and-manipulate-with-sam-bam-files-2c28b25d29e8)
-
 
 ```
 inp_loc="/Users/hetzler/Amphipod/MiSeq/trimmed"
@@ -144,6 +142,8 @@ for i in $(eval echo {A..D}); do
 done
 ```
 
+[How to manipulate sam/bam files](https://medium.com/@shilparaopradeep/samtools-guide-learning-how-to-filter-and-manipulate-with-sam-bam-files-2c28b25d29e8)
+
 Remove low quality mapped reads
 
 ```
@@ -156,6 +156,22 @@ for i in $(eval echo {A..D}); do
       samtools view -q 30 -b $inp_loc/${i}${x}.bam > $out_loc/${i}${x}.bam
     done
 ```
+```
+library(ggplot2)
+
+counts <- read.delim("~/Amphipod/MiSeqOSL/R/counts.txt", header=FALSE)
+
+colnames(counts) <- c("gene", "count", "ID", "site")
+
+
+
+ggplot(counts, aes(factor(ID), count, fill = gene)) +     
+  geom_col(position = 'dodge') +
+  theme(axis.text.x = element_text(angle = 90), legend.position = "none") +
+  facet_wrap(~as.factor(counts$gene) + as.factor(counts$site), scales = "free")
+```
+
+[map count](Obtusa/map_counts.png)
 
 ### Sort and convert from .sam to .bam
 
