@@ -68,7 +68,7 @@ for i in $(eval echo {A..D}); do
       FWD1=CHACWAAYCATAAAGATATYGG  #forward primer COI
       FWD2=ATCCCTGGTTGATCCTGCCAGT  #forward primer 18S
       REV1=AWACTTCVGGRTGVCCAAARAATCA #reverse primer COI
-      REV2=CCTGCGCTCGATACTGACAT  #forward primer 18S
+      REV2=CCTGCGCTCGATACTGACAT  #reverse primer 18S
       cutadapt -g $FWD1 -g $FWD2 -G $REV1 -G $REV2 \
       -o $out_loc/${i}${x}\_R1.fastq -p $out_loc/${i}${x}\_R2.fastq \
       ${i}${x}\_L001_R2_001.fastq \
@@ -243,61 +243,32 @@ bcftools merge -m indels -l merge.txt -0 -Oz -o indel.vcf.gz
 
 bcftools annotate -x INFO,^FORMAT/GT pop.vcf.gz -Oz -o popAno.vcf.gz
 ```
+
 54 SNPs (7 from multiallelic sites) and 1 indel were retrived from filtered sequences with bcftools. 
 
-## Population Genetics Window analysis
-
-If you have genome wide SNPs then a window based analysis could be used to analyse the population distribution.
-
-Convert to GENO file. 
-
 ```
-set_loc="/Users/hetzler/Amphipod/variantCalling"
+bcftools view file.vcf.gz --regions [CHROM NAME] > output.vcf 
 
-cd $set_loc
-
-parseVCF.py -i pop_merged.vcf.gz -o pop.geno
+bgzip output.vcf
 ```
-
-
-Create a file containing population information using grep
-
-```
-set_loc="/Users/hetzler/Amphipod/variantCalling"
-inp_loc="/Users/hetzler/Amphipod/mappedReads"
-
-cd $set_loc
-
-ls $inp_loc/sort* > samples
-
-#CREATE POPULATION IDENTIFYER FILE 
-grep  'sort_A' samples > SAL
-grep  'sort_B' samples >> SAL
-grep 'sort_C' samples > SKJ
-grep 'sort_D' samples >> SKJ
-
-awk '{print $1"\tSAL"}' SAL > pop_file
-awk '{print $1"\tSKJ"}' SKJ >> pop_file
-```
-
-population genomics analysis
-```
-gzip pop.geno
-
-popgenWindows.py -g pop.geno.gz -o div_stat.csv -f phased -w 1500 -m 5 -s 25000 -p SAL -p SKJ --popsFile pop_file --writeFailedWindow
-```
-
 
 #### MAF filtering
 
+Threshold for MAF filtering is normally set to 0.05, with this threshold we would loose to much information to do any further analysis so a lower threshold is chosen at 0.01.
+
+```
 bcftools view -q 0.01:minor pop.vcf.gz > popMAF_01.vcf.gz
+```
+
+After filtering for minor allele frequency (MAF) we are left with 24 SNPs (4 from multialleleic sites)
+
+We split the data into seperate VCF files for each gene to do further analysis in R with the packages pegas, mmod and adegenet.
 
 #### Multifasta from consensus files.
 
-https://samtools.github.io/bcftools/howtos/consensus-sequence.html
+[Samtools consensus sequence manual](https://samtools.github.io/bcftools/howtos/consensus-sequence.html)
 
-__NB: try to normalized indels and filter calls__
-
+with the retrieved SNV we can create a consensus sequence 
 Create consensus files from reference fasta and indexed VCF file using only SNPs
 
 ```
@@ -364,114 +335,33 @@ done < $1
 Create equal names between fasta headers:
 
 ````
-#file header: >18S_Orchomenella_obtusa-A1
+#input file header: >18S_Orchomenella_obtusa_A1
 
 sed 's/^>18S_/>/' < inputfile > outputfile
+
+#output file header: Orchomenella_obtusa_A1
 ```
-````
-#file header: >COI_Orchomenella_obtusa-A1
+
+```
+#input file header: >COI_Orchomenella_obtusa_A1
 
 sed 's/^>COI_/>/' < inputfile > outputfile
 
-
+#output file header: Orchomenella_obtusa_A1
 ```
 
-Masked fasta???
+In the MEGA software we can import the multifasta files and highlight variable sites and export the marked sites to a new fasta file, import the new fasta file again and highligth singleton sites and export to a final fasta file ready for differential analysis.
 
-````
-1. Call variants.
-
-2. Identify positions with nocalls (say, by emitting all sites) and convert to a BED:
-
-grep "\./\." [YOUR_VCF] | awk '{OFS="\t"; if ($0 !~ /\#/); print $1, $2-1, $2}' > [YOUR_FILTERED_BED]
-3. Use BEDtools' maskfasta.
+The output from MEGA should look something like:
+```
+#COI_var_st.fas
+>Orchomenella_obtusa_A1  
+TGTTATAGTTCTATGAATCCCG
+>Orchomenella_obtusa_A10 
+TGTTACAGTTCCATAAATCCCC
+>Orchomenella_obtusa_A11 
+TGTTATAGTTTTATAAATCTCC
+>Orchomenella_obtusa_A12 
 ```
 
-
-## Fasta Alternate Reference Maker
-
-Create reference sequence dictionary
-
-```
-java -jar /home/jhetzler/tools/picard/picard.jar CreateSequenceDictionary R=../ref/reference.fasta O=../ref/reference.dict
-```
-
-Create index files for vcf
-
-```
-gatk IndexFeatureFile -I A1.vcf.gz
-```
-
-Create an alternative reference by combining a fasta with a vcf.
-
-https://gatk.broadinstitute.org/hc/en-us/articles/360037594571-FastaAlternateReferenceMaker
-
-```
-gatk FastaAlternateReferenceMaker -R /home/jhetzler/MiSeqOSL/ref/reference.fasta -O A1_FARM.fasta -V A1.vcf.gz
-```
-
-
-## Haplotype Network
-
-PopART
-DNAsp
-Arlequin
-
-# TO DO:
-
-Check Alignment score
-Haplotype network
-
-
-Window or SNP detection 
-to chose windows size is based on linkage disiquilibrium.
-larger scaffold use SNP level
-
-#### VCFTOOLS filtering
-
-
-```
-#!/bin/bash
-
-set_loc="/home/jhetzler/MiSeqOSL/VC/filter"
-cd $set_loc
-
-VCF_IN="pop.vcf.gz"
-VCF_OUT="pop_filtered.vcf.gz"
-
-# set filters
-MAF=0.1
-#MISS=0.9
-#QUAL=30
-MIN_DEPTH=10
-MAX_DEPTH=50
-
-vcftools --gzvcf $VCF_IN \
---remove-indels --maf $MAF --max-missing $MISS --minQ $QUAL \
---min-meanDP $MIN_DEPTH --max-meanDP $MAX_DEPTH \
---minDP $MIN_DEPTH --maxDP $MAX_DEPTH --recode --stdout | gzip -c > \
-$VCF_OUT
-```
-
-
-MAF filtering seperate VCF-files
-
-```
-set_loc="/home/jhetzler/MiSeqOSL/VC/fltr"
-cd $set_loc
-
-MAF=0.1
-
-for i in $(eval echo {A..D}); do
-  for x in {1..50}
-    do
-    vcftools --vcf ${i}${x}.vcf.gz \
-      --remove-indels --maf $MAF --recode --stdout | gzip -c > \
-      ${i}${x}_maf.vcf.gz
-    done
-  done
-
-
-```
-
-
+The reduced multifasta files containing only variable sites can be used to calculate [differential statistics](DiffSeq.md) and to create a haplotype network in [PopART](PopART.md) 
