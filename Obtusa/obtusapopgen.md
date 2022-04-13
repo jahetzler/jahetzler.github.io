@@ -286,7 +286,7 @@ done
 ```
 
 Add prefix of fasta headers
-````
+```
 #!/bin/bash
 set_loc="/home/jhetzler/MiSeqOSL/VC/fltr"
 cd $set_loc
@@ -299,7 +299,7 @@ done
 ```
 
 Add suffix of fasta headers
-````
+```
 #!/bin/bash
 set_loc="/home/jhetzler/MiSeqOSL/VC/fltr"
 cd $set_loc
@@ -334,7 +334,7 @@ done < $1
 
 Create equal names between fasta headers:
 
-````
+```
 #input file header: >18S_Orchomenella_obtusa_A1
 
 sed 's/^>18S_/>/' < inputfile > outputfile
