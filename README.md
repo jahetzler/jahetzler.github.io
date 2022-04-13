@@ -10,6 +10,18 @@ Usefull linux termianl commands for bioinformatics
 
 ## _Orchomenella obtusa_ PopGen
 
-Pipeline for COI and 18S metabarcoding Sequencing
+Pipeline for COI and 18S metabarcoding Sequencing:
+- Quality control
+- trimming
+- mapping
+- variant calling
+- filtering (MAF)
+- creating multifasta files
 
 - [O.obtusa PopGen](Obtusa/obtusapopgen.md)
+
+Differential statistics
+- [O.obtusa DiffStat](Obtusa/DiffSeq.md)
+
+Haplotype network with PopART
+- [O.obtusa PopART](Obtusa/PopART.md)
