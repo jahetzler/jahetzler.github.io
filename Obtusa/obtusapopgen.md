@@ -316,7 +316,9 @@ create multi.fasta file from fasta files
 cat *.fa > multi.fas
 ```
 
-separate multifasta files
+separate multifasta files:
+
+Run script: sep_multifasta.sh multi.fas
 
 ```
 #!/bin/bash
