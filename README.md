@@ -8,7 +8,7 @@ Thesis link (expected to be out by may 2023): [Population genetic structure of t
 
 Step by step guide for the bioinformatics in my master thesis. </br>
 
-Pipeline for COI and 18S amplicon sequences: <br/>
+Pipeline for COI and 18S amplicon sequence variant calling: <br/>
 Quality control, adapter trimming, mapping, quality filtering, variant calling and creating multifasta files.
 
 - [O. obtusa Variant Calling](Obtusa/obtusapopgen.md)
