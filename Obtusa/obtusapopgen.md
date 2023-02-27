@@ -1,6 +1,6 @@
 ## About the data
 
-This report explores the population structure and connectivity of the mesopelagic savaging amphipod Orchomenella obtusa between two connecting fjord systems (Saltenfjorden, Skjerstadfjorden). The fjord system is connected through Saltstraumen, a 40m deep sill where tidal forces transfer large water masses between the two fjords. O. obtusa were sampled at four equidistant locations with two stations per fjord. 50 individuals from each station were sequenced on Illumina MiSeq for amplicons of mtDNA COI and 18S rRNA.
+This report explores the population structure and connectivity of the mesopelagic savaging amphipod Orchomenella obtusa between two connecting fjord systems (Saltenfjorden, Skjerstadfjorden). The fjord system is connected through Saltstraumen, a 30 m deep and 200 m wide sill where tidal forces transfer large water masses between the two fjords. O. obtusa were sampled at four equidistant locations with two stations per fjord. 50 individuals from each station were sequenced on Illumina MiSeq for amplicons of mtDNA COI and 18S rRNA.
 
 
 ## Programs used
@@ -13,6 +13,9 @@ BCFtools  [Program](http://www.htslib.org/download/) - [Manual](https://samtools
 
 
 ## Trimming and Quality Control
+
+First step is to organize the data and to make my life a bit easier I removed unnecessary strings from my sequence ID before starting on the pipeline. <br/>
+Renamed file format e.g. A1_S218_L001_R1_001_fastqc.gz to A1_R1.fasta.gz.
 
 ### Rename sequence file names for easier parsing in later steps
 
@@ -35,24 +38,27 @@ done
 
 ### Trim adapters with cutadapt
 
-Trim amplicon adapters from the fastq files, this removes any possibilities for point mutations from degenerated PCR primers to be included in the further analysis of the data. 
+Trim amplicon adapters from the fastq files. Removing adapters from the aplicon sequences decreses the possibilities for point mutations from degenerated PCR primers to be included in the further analysis of the data. <br/>
 
-Trim COI and 18S primers from one fastq file.
+Forward primer COI: CHACWAAYCATAAAGATATYGG <br/>
+Reverse primer COI: AWACTTCVGGRTGVCCAAARAATCA <br/>
+Forward primer 18S: ATCCCTGGTTGATCCTGCCAGT <br/>
+Reverse primer 18S: CCTGCGCTCGATACTGACAT <br/>
 
+Trim COI and 18S primers from one sample, forward and reverse reads.
 ```
 #Activate Conda environment before running: conda activate cutadaptenv
 
 cutadapt \
--g CHACWAAYCATAAAGATATYGG \
+-g CHACWAAYCATAAAGATATYGG \ 
 -g ATCCCTGGTTGATCCTGCCAGT \
 -G AWACTTCVGGRTGVCCAAARAATCA \
 -G CCTGCGCTCGATACTGACAT \
 -o trmFastQ/A1_R1.fastq.gz -p trmFastQ/A1_R2.fastq.gz \
---discard-untrimmed A1_S218_L001_R1_001.fastq.gz A1_S218_L001_R2_001.fastq.gz
+--discard-untrimmed A1_R1.fastq.gz A1_R2.fastq.gz
 ```
 
-Trim COI and 18S primers from multiple fastq files.
-
+Simple for loop to trim COI and 18S primers from multiple samples.
 
 ```
 #Activate Conda environment before running: conda activate cutadaptenv
@@ -109,10 +115,10 @@ Adapter trimmed<br/>
 ## Sequence mapping
 
 The amplicon sequences are mapped to their reference genes using the bowtie2 alignment tool.<br/>
-Reference genes used in this analysis were exracted a denovo assembly of Orchomenella obtusa from a WGS run for the [High throughput sequencing of non-model organisms](https://www.nord.no/no/aktuelt/kalender/Sider/PhD-course-High-throughput-sequencing-of-non-model-organisms-DR425F-2017.aspx) course at Nord university.
+Reference genes used in this analysis were exracted a denovo assembly of Orchomenella obtusa from a shotgun WGS run from the [High throughput sequencing of non-model organisms](https://www.nord.no/no/aktuelt/kalender/Sider/PhD-course-High-throughput-sequencing-of-non-model-organisms-DR425F-2017.aspx) course at Nord university. <br/>
 
 ### Create reference sequence index
-Create index reference files for bowtie2 alignment.
+Firstly we need to create an index reference files for the bowtie2 alignment.
 
 [reference.fasta](reference.fasta) contains COI and 18S reference sequence. 
 
@@ -122,7 +128,7 @@ bowtie2-build "/Users/hetzler/Amphipod/referenceSeq/reference.fasta" "/Users/het
 
 ### Map reads to reference sequence
 
-Map reads to reference sequence using bowtie2. 
+Then we can map the amplicon reads to their respective reference sequence using bowtie2. 
 
 
 ```
@@ -144,11 +150,11 @@ done
 
 [How to manipulate sam/bam files](https://medium.com/@shilparaopradeep/samtools-guide-learning-how-to-filter-and-manipulate-with-sam-bam-files-2c28b25d29e8)
 
-Remove low quality mapped reads
+Then we remove any mapped reads with low quality, by filtering for a minimum q-score of 30. 
 
 ```
-inp_loc="/home/jhetzler/MiSeqOSL/map"
-out_loc="/home/jhetzler/MiSeqOSL/map/fltr"
+inp_loc="/MiSeqOSL/map"
+out_loc="/MiSeqOSL/map/fltr"
 
 for i in $(eval echo {A..D}); do
   for x in {1..50}
@@ -156,19 +162,29 @@ for i in $(eval echo {A..D}); do
       samtools view -q 30 -b $inp_loc/${i}${x}.bam > $out_loc/${i}${x}.bam
     done
 ```
+After mapping the reads we can plot how many amplicons mapped to their respective gene. </br>
+
+Count reads per file and add ID and sampling site.
+```
+INSERT CODE FOR MAPPED READS COUNT!
+```
+Output: [mapped_reads.txt](mapped_reads.txt)
+
 ```
 library(ggplot2)
 
-counts <- read.delim("~/Amphipod/MiSeqOSL/R/counts.txt", header=FALSE)
+counts <- read.delim("mapped_reads.txt", header=FALSE) # Import file
 
-colnames(counts) <- c("gene", "count", "ID", "site")
+colnames(counts) <- c("gene", "count", "ID", "site") # Add header
 
-
-
+#Plot mapped reads
 ggplot(counts, aes(factor(ID), count, fill = gene)) +     
   geom_col(position = 'dodge') +
   theme(axis.text.x = element_text(angle = 90), legend.position = "none") +
   facet_wrap(~as.factor(counts$gene) + as.factor(counts$site), scales = "free")
+  
+#Summary statistics
+summaryBy(count ~ site, counts, FUN = c(mean,sd, min, max))
 ```
 
 ![map count](map_counts.png)
@@ -176,10 +192,10 @@ ggplot(counts, aes(factor(ID), count, fill = gene)) +
 
 ### Sort and convert from .sam to .bam
 
-Before running any variant calling software we pre-sort the bam files.
+Before running any variant calling software we pre-sort the bam files. Again running the same command on all files through a for-loop.
 
 ```
-set_loc="/Users/hetzler/Amphipod/mappedReads"
+set_loc="/Amphipod/mappedReads"
 
 cd $set_loc
 
@@ -193,20 +209,22 @@ done
 
 ## variant calling
 
-With bcftools we identify variants from the sequence data, for our analysis we are after Single Nucleotide Variant (SNV). Other types of variants called by the software include MNP (adjacent SNPs) and indels, these are not included in further analysis.
+With bcftools we identify variants from the sequence data, for our analysis we are after Single Nucleotide Polymorphisms (SNPs). Other types of variants called by the software include MNP (adjacent SNPs) and indels, these are not included in further analysis. </br>
 
-Note: The newer version of BCFtools [mpileup] sets maximum number of reads per input file set to -d 250, this can be set higher to include more reads. Previous limit was set to 8000.
+Note: The newer version of BCFtools [mpileup] sets maximum number of reads per input file set to -d 250, this can be set higher to include more reads. Previous limit was set to 8000, but we can increase it to our mean (15k for 18S or 25K for COI) or max read count (28k for 18S or 51k for COI) to include the high coverage we have for amplicon sequenceing. </br>
+
+
 
 ```
-ref_file="/Users/hetzler/Amphipod/referenceSeq/reference.fasta"
-id_loc="/Users/hetzler/Amphipod/mappedReads"
-out_loc="/Users/hetzler/Amphipod/variantCalling"
+ref_file="/Amphipod/referenceSeq/reference.fasta"
+id_loc="/Amphipod/mappedReads"
+out_loc="/Amphipod/variantCalling"
 cd $id_loc
 
 #variant calling
 for i in $(eval echo {A..D}); do
 	for x in {1..5}; do
-    bcftools mpileup -f $ref_file sort_${i}${x}.bam | bcftools call -mv -Ob -o $out_loc/calls_${i}${x}.vcf.gz
+    bcftools mpileup -d 8000 -f $ref_file sort_${i}${x}.bam | bcftools call -mv -Ob -o $out_loc/calls_${i}${x}.vcf.gz
   done
 done
 ```
