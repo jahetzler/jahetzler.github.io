@@ -1,7 +1,8 @@
 ## About the data
 
-This report explores the population structure and connectivity of the mesopelagic savaging amphipod Orchomenella obtusa between two connecting fjord systems (Saltenfjorden, Skjerstadfjorden). The fjord system is connected through Saltstraumen, a 30 m deep and 200 m wide sill where tidal forces transfer large water masses between the two fjords. O. obtusa were sampled at four equidistant locations with two stations per fjord. 50 individuals from each station were sequenced on Illumina MiSeq for amplicons of mtDNA COI and 18S rRNA.
+This report explores the population structure and connectivity of the mesopelagic savaging amphipod Orchomenella obtusa between two connecting fjord systems (Saltenfjorden, Skjerstadfjorden). The fjord system is connected through Saltstraumen, a 30 m deep and 200 m wide sill where tidal forces transfer large water masses between the two fjords. O. obtusa were sampled at four equidistant locations with two stations per fjord. 50 individuals from each station were sequenced on Illumina MiSeq for amplicons of mtDNA COI and 18S rRNA with dual indexing barcodes.
 
+![Amplicon overview](amplicon_overview.png)
 
 ## Programs used
 
@@ -11,7 +12,8 @@ cutadapt  [Program](https://bioconda.github.io/recipes/cutadapt/README.html) - [
 bowtie2   [Program](https://sourceforge.net/projects/bowtie-bio/files/bowtie2/) - [Manual](http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml)<br/>
 BCFtools  [Program](http://www.htslib.org/download/) - [Manual](https://samtools.github.io/bcftools/bcftools.html)
 
-
+## Example files
+Raw 
 ## Trimming and Quality Control
 
 First step is to organize the data and to make my life a bit easier I removed unnecessary strings from my sequence ID before starting on the pipeline. <br/>
