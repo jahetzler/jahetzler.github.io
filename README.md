@@ -11,13 +11,13 @@ Step by step guide for the bioinformatics in my master thesis. </br>
 Pipeline for COI and 18S amplicon sequences: <br/>
 Quality control, adapter trimming, mapping, quality filtering, variant calling and creating multifasta files.
 
-- [O.obtusa PopGen](Obtusa/obtusapopgen.md)
+- [O. obtusa Variant Calling](Obtusa/obtusapopgen.md)
 
 Genetic variability and differential statistics
-- [O.obtusa DiffStat](Obtusa/DiffSeq.md)
+- [O. obtusa Statistics](Obtusa/DiffSeq.md)
 
 Haplotype network with PopART
-- [O.obtusa PopART](Obtusa/PopART.md)
+- [O. obtusa PopART](Obtusa/PopART.md)
 
 ### Bioinformatics
 
