@@ -1,6 +1,6 @@
 ## Welcome to my GitHub Reposatory
 
-I am a master student at Nord Universitet with an interest in bioinformatics and population genomics.
+Master student at Nord Universitet with an interest in bioinformatics and population genetics.
 
 ### Bioinformatics terminal commands
 
@@ -10,7 +10,7 @@ Usefull linux termianl commands for bioinformatics
 
 ## _Orchomenella obtusa_ PopGen
 
-Pipeline for COI and 18S metabarcoding Sequencing: <br/>
+Pipeline for COI and 18S barcoding Sequencing: <br/>
 Quality control, trimming, mapping, variant calling, filtering (MAF) and creating multifasta files
 
 - [O.obtusa PopGen](Obtusa/obtusapopgen.md)
