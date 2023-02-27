@@ -30,6 +30,7 @@ getLocusNames(data)
 #Create genind object
 ```
 data.gid <- multidna2genind(data, mlst = TRUE)
+ploidy(data.gid)<-1 # haploid mtDNA
 data.gid
 
 /// GENIND OBJECT /////////
@@ -82,7 +83,7 @@ $global
 we are seeing for each locus and global calculations for within-group heterozygosity (HS); total heterozygosity (Ht); Nei's Gst (Gst);
 Hedrick's G”st (Gprime_st), Jost's D (D). 
 
-A more approprate test for mtDNA would be meirmans Phi_st
+A more approprate test for mtDNA would be the AMOVA based meirmans Φst
 
 ```
 Phi_st_Meirmans(data.gid) 
@@ -123,3 +124,5 @@ C 0.06599322 0.07305464
 D 0.08164839 0.04458731 0.05565753
 ```
 *Global pairwise test for rDNA and mtDNA might not be the best idea, so do individual runs with COI and 18S*
+
+
