@@ -1,12 +1,8 @@
 ## Welcome to my GitHub Reposatory
 
-Master student at Nord Universitet with an interest in population genetics and bioinformatics.
+I'm a master student at Nord Universitet with an interest in population genetics and bioinformatics. I'm currently working on a population genetics study on the scavenging amphipod species _Orchomenella obtusa_ in fjords surrounding Saltstraumen (Skjerstadfjorden and Saltenfjorden). Here I'm trying to determine if the sill separating the fjords are acting as a genetic barrer for the selected species (spoiler: it's not), by using amplicon sequences of the mitochondrial gene COI and rRNA gene 18S. </br>
 
-### Bioinformatics terminal commands
-
-Usefull linux termianl commands for bioinformatics
-
-- [Linux Commands](LinuxCommands.md)
+Thesis link (expected to be out by may 2023): [Population genetic structure of the scavenging amphipod O. obtusa in a deep fjord system.](https://nordopen.nord.no/nord-xmlui/handle/11250/2731119)
 
 ## Master thesis: population genetics on _Orchomenella obtusa_
 
@@ -17,8 +13,14 @@ Quality control, adapter trimming, mapping, quality filtering, variant calling a
 
 - [O.obtusa PopGen](Obtusa/obtusapopgen.md)
 
-Differential statistics
+Genetic variability and differential statistics
 - [O.obtusa DiffStat](Obtusa/DiffSeq.md)
 
 Haplotype network with PopART
 - [O.obtusa PopART](Obtusa/PopART.md)
+
+### Bioinformatics
+
+Usefull linux termianl commands for bioinformatics
+
+- [Linux Commands](LinuxCommands.md)
