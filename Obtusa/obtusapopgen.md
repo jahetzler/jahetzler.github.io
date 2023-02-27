@@ -3,7 +3,7 @@
 This report explores the population structure and connectivity of the mesopelagic savaging amphipod Orchomenella obtusa between two connecting fjord systems (Saltenfjorden, Skjerstadfjorden). The fjord system is connected through Saltstraumen, a 30 m deep and 200 m wide sill where tidal forces transfer large water masses between the two fjords. O. obtusa were sampled at four equidistant locations with two stations per fjord. 50 individuals from each station were sequenced on Illumina MiSeq for amplicons of mtDNA COI and 18S rRNA with dual indexing barcodes.
 
 ![Amplicon overview](Amplicon_overview.png)
-
+*figure 2: Overview of amplicon sequencing. Basepair length scale of COI gene (blue) on top, with amplicon (green) and amplicon primers (orange) underneath. on the bottom the sequenced amplicon (yellow) forward and reverse reads are shown.*
 ## Programs used
 
 FastQC    [Program](https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc) - [Manual](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/)<br/>
@@ -193,7 +193,7 @@ summaryBy(count ~ site, counts, FUN = c(mean,sd, min, max))
 ```
 
 ![map count](map_counts.png)
-*figure 1: 7 individuals with <100 mapped reads, mean read count 18S: 14469, mean read count COI: 24376. with group mean varying between 11979 (18S site A) to 28786 (COI site D)*
+*figure 2: 7 individuals with <100 mapped reads, mean read count 18S: 14469, mean read count COI: 24376. with group mean varying between 11979 (18S site A) to 28786 (COI site D)*
 
 ### Sort and convert from .sam to .bam
 
