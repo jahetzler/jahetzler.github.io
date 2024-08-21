@@ -7,7 +7,7 @@ I'm a biologist, with a master of biosciences from Nord Universitet with an keen
 This is my attempt at making a sampling map with data from my thesis in the style of Randall Munroe's xkcd webcomic maps. 
 This map is made in R and utilises data from offical Norwegian map database: [Kartkatalogen](https://www.geonorge.no/).
 
-- [xkcd sampling map]("xkcd sampling map"/xkcd_map.md) 
+- [xkcd sampling map](xkcdSamplingMap/xkcd_map.md) 
 
 ## Master thesis: population genetics on _Orchomenella obtusa_
 
