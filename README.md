@@ -2,6 +2,14 @@
 
 I'm a biologist, with a master in biosciences from Nord University, and an keen interest in population genetics, bioinformatics, data analysis, map making and datavisualisation.
 
+## SHUe - Statistikk for Høyere Utdanning'e
+
+- [SHUe](https://jhetzler.shinyapps.io/SHUe)
+
+Project of mine for visualizing openly available data for higher education in Norway. For simplicity sake the data is subset to include only one univeristy (NORD), but if there is any interest or I have time I might add the other universities in Norway.
+
+General information about universities are gathered from [Database for statistikk om høyere utdanning](https://dbh.hkdir.no/), for applications related to Norwegian Resaerch Council I've used the data available at [data.norge.no](https://data.norge.no/datasets/d23bbbfa-fdad-4dab-b31b-4daadbfa3299), and for EU Horizon projects I've gathered data from [data.europa.eu](https://data.europa.eu/data/datasets/cordis-eu-research-projects-under-horizon-europe-2021-2027?locale=en) 
+
 ## xkcd samling map - Norwegian coast
 
 This is my attempt at making a sampling map with data from my thesis in the style of Randall Munroe's xkcd webcomic maps. 
