@@ -6,6 +6,9 @@ Sampling map for my master thesis in the style of Randall Munroe's [xkcd comic](
 
 This map is made just for an excersise for myself in map making, and as a tribute to all the fantastic maps that Randall Munroe has made over the years.
 
+### link to R file:
+[xkcd map](xkcd_map.r)
+
 ### Data:
 
 Depth of the sea is mapped using the nautical map with [depth data from kartkatalogen](https://kartkatalog.geonorge.no/metadata/sjoekart-dybdedata/2751aacf-5472-4850-a208-3532a51c529a),
