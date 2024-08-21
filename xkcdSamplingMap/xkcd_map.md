@@ -7,7 +7,7 @@ Sampling map for my master thesis in the style of Randall Munroe's [xkcd comic](
 This map is made just for an excersise for myself in map making, and as a tribute to all the fantastic maps that Randall Munroe has made over the years.
 
 ### link to R file:
-[xkcd map](xkcd_map.R)
+[xkcd_map.R](https://github.com/jahetzler/jahetzler.github.io/blob/2d4622c7c97ca8c7df0757354e704a0d1193e43d/xkcdSamplingMap/xkcd_map.R)
 
 ### Data:
 
