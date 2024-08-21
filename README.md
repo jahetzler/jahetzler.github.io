@@ -1,6 +1,6 @@
 ## Welcome to my GitHub Reposatory
 
-I'm a biologist, with a master in biosciences from Nord Universitet with an keen interest in population genetics, bioinformatics, data analysis, map making and datavisualisation.
+I'm a biologist, with a master in biosciences from Nord University, and an keen interest in population genetics, bioinformatics, data analysis, map making and datavisualisation.
 
 ## xkcd samling map - Norwegian coast
 
