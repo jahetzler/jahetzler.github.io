@@ -7,6 +7,12 @@ library(extrafont)
 library(mapview)
 library(xkcd)
 
+# Note: xkcd font is downloaded from https://github.com/ipython/xkcd-font.
+#       import font with the extrafont package, and set working directory to where you 
+#       downloaded the font, then import font with this code: 
+#       font_import(paths = getwd(), pattern = "[X/x]kcd-script", prompt=FALSE)
+#       I could not import it any other way, and this seems to be a known issue!
+
 # Global variables: ------------------------------------------------------------
 
 # Sampling area
