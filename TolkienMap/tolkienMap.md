@@ -1,6 +1,6 @@
 ## Tolkien inspired map
 
-<img src="Vestvågøy.pdf" width="50%" height="50%"/>
+<img src="Vestvågøy.png" width="50%" height="50%"/>
 
 Here I have used open source data to create a map of the municipality Vestvågøy in norway. But the with the code included you should be able to modify it to make a similar map for any municipality or county in norway.
 note: I have included data to make this map for norland county, for any other county you will have to duplicate the nordlandInfo.csv file I have for data in other counties.
