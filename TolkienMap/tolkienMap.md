@@ -1,4 +1,4 @@
-## Tolkien inspired map
+## R: Tolkien inspired map
 
 <img src="Vestvågøy.png" width="50%" height="50%"/>
 
@@ -9,10 +9,13 @@ data used is the n100 map data from norges kart [geonorge.no]([https://link-url-
 For the mountains I used the brush set from [Orborot](https://www.deviantart.com/orboroth/art/LotR-Map-Brushes-609527672), I have also uploaded onto github the cropped .png files I used from this brush set.
 Fonts used in this project is the [Aniron font](https://www.dafont.com/aniron.font).
 
+R code and data [here](https://github.com/jahetzler/jahetzler.github.io/tree/main/TolkienMap)
+
 To do:
 
 - Look into aligning mountains, it looks a bit strange on small islands. 
 - Add brush sets for cities.
+- Overlapping text (text collision) 
 - Add Forrest and other large terrestial features.
 
 
