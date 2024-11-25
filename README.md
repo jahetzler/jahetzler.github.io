@@ -2,6 +2,13 @@
 
 I'm a biologist, with a master in biosciences from Nord University, and an keen interest in population genetics, bioinformatics, data analysis, map making and datavisualisation.
 
+## Tolkien map from open source data
+
+Trying to make a map over different parts of norway in the style of J.R.R Tolkien using map data from geonorge.
+Example image, code and data for vestvågøy included here.
+
+- [Tolkien map](TolkienMap/tolkienMap.md)
+
 ## SHUe - Statistikk for Høyere Utdanning'e
 
 - [SHUe](https://jhetzler.shinyapps.io/SHUe)
