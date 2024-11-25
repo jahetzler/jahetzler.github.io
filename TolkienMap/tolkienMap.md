@@ -7,8 +7,12 @@ note: I have included data to make this map for norland county, for any other co
 data used is the n100 map data from norges kart [geonorge.no]([https://link-url-here.org](https://kartkatalog.geonorge.no/metadata/n100-kartdata/11a70876-5b21-4cc6-8229-902266c4968f)), and I have also used [robhop](https://github.com/robhop/) municipality map [link](https://github.com/robhop/fylker-og-kommuner/blob/main/Kommuner-L.geojson). So thanks for splicing together data from geonorge for ease of use.
 
 For the mountains I used the brush set from [Orborot](https://www.deviantart.com/orboroth/art/LotR-Map-Brushes-609527672), I have also uploaded onto github the cropped .png files I used from this brush set.
-Fonts used in this project is the [Aniron font](https://www.dafont.com/aniron.font) 
+Fonts used in this project is the [Aniron font](https://www.dafont.com/aniron.font).
 
+To do:
 
+- Look into aligning mountains, it looks a bit strange on small islands. 
+- Add brush sets for cities.
+- Add Forrest and other large terrestial features.
 
 
