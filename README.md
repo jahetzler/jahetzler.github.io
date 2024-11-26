@@ -2,6 +2,12 @@
 
 I'm a biologist, with a master in biosciences from Nord University, and an keen interest in population genetics, bioinformatics, data analysis, map making and datavisualisation.
 
+## Python - Pydeck: Fangstdata
+
+Testing out pydeck to plot large datasets (700K points) on a map. Map showing where fishing boats have undocked their load and from where it was caught. 
+
+- [FDIR](FDir/pydeck/fangstdata.md)
+
 ## R: Tolkien map from open source data
 
 Trying to make a map over different parts of norway in the style of J.R.R Tolkien using map data from geonorge.
