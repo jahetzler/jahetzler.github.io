@@ -1,12 +1,12 @@
 # Fiskeridirektoratet fangstdata
 
-[download](arc_layers.html) and run html file to 
+[download](arc_layers.html) and run html file to see example map. (file with all points 
 
 I have used pydeck to plot in which municipality fishing boats have unloaded their catch and from which area the area the fish have been caught in.
 
 datasets used in this is the [fangstdata](https://www.fiskeridir.no/Tall-og-analyse/AApne-data/Fangstdata-seddel-koblet-med-fartoeydata) from fiskeridirektoratet, and [robhop](https://github.com/robhop/) municipality geojson data [link](https://github.com/robhop/fylker-og-kommuner/blob/main/Kommuner-L.geojson).
 
-Libraries 
+## Libraries 
 
 ```
 import pydeck as pdk
@@ -33,7 +33,7 @@ from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
 
 ```
-Import and format data from fiskeridirektoratet
+## Import and format data from fiskeridirektoratet
 ```
 df = pd.read_csv('fangstdata_2024.csv.zip', sep=';')
 
@@ -64,7 +64,7 @@ df["Lat (lokasjon)"] = df["Lat (lokasjon)"].astype('str')
 df["Lat (lokasjon)"] = df["Lat (lokasjon)"].str.replace(',','.')
 
 ```
-# Import municipality map 
+## Import municipality map 
 
 ```
 
@@ -80,13 +80,13 @@ gdf["x"] = gdf.centroid.x
 gdf["y"] = gdf.centroid.y
 
 ```
-# Merge datasets
+## Merge datasets
 
 ```
 df = pd.merge(df, gdf[["id", "x", "y"]], how="right", left_on="Produksjonskommune (kode)", right_on = "id")
 ```
 
-# Match opp landingskommune med centroid for kommune fra kommunekart data!
+## Match opp landingskommune med centroid for kommune fra kommunekart data!
 ```
 df_pydeck = df[["Lon (lokasjon)", "Lat (lokasjon)", "x", "y", "Landingskommune", "Hovedområde"]]
 
@@ -111,8 +111,9 @@ df_pydeck = df_pydeck.dropna()
 
 ```
 
-# plot in pydeck
+## plot in pydeck
 
+This code only runs a subset of the dataset (Bodø and Ørland) to upload an example map, the full html file for the dataset is around 200mb. 
 ```
 # Specify a deck.gl ArcLayer
 Bodoe = pdk.Layer(
