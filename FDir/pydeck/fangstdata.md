@@ -1,5 +1,7 @@
 # Fiskeridirektoratet fangstdata
 
+[download](arc_layers.html) and run html file to 
+
 I have used pydeck to plot in which municipality fishing boats have unloaded their catch and from which area the area the fish have been caught in.
 
 datasets used in this is the [fangstdata](https://www.fiskeridir.no/Tall-og-analyse/AApne-data/Fangstdata-seddel-koblet-med-fartoeydata) from fiskeridirektoratet, and [robhop](https://github.com/robhop/) municipality geojson data [link](https://github.com/robhop/fylker-og-kommuner/blob/main/Kommuner-L.geojson).
