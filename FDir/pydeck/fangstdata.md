@@ -86,7 +86,7 @@ gdf["y"] = gdf.centroid.y
 df = pd.merge(df, gdf[["id", "x", "y"]], how="right", left_on="Produksjonskommune (kode)", right_on = "id")
 ```
 
-## Match opp landingskommune med centroid for kommune fra kommunekart data!
+## Match up landing point with centroid for the municipality from the municipality data
 ```
 df_pydeck = df[["Lon (lokasjon)", "Lat (lokasjon)", "x", "y", "Landingskommune", "Hovedområde"]]
 
