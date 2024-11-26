@@ -8,6 +8,12 @@ Testing out pydeck to plot large datasets (700K points) on a map. Map showing wh
 
 - [FDIR](FDir/pydeck/fangstdata.md)
 
+## R/Python: Fiskeridirektoratet
+
+Diverse prosjekter med åpen data fra fiskeridirektoratets ERS og fangstdata. Brukt for å teste ut forskjellige grafiske moduler i R og python.
+
+- [FDIR](FDir/FDir.md)
+
 ## R: Tolkien map from open source data
 
 Trying to make a map over different parts of norway in the style of J.R.R Tolkien using map data from geonorge.
