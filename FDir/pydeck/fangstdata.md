@@ -1,6 +1,6 @@
 # Fiskeridirektoratet fangstdata
 
-[download](arc_layers.html) and run html file to see example map. (file with all points 
+[Link to example map](arc_layers.html) (file with all points is too big (200mb) to upload to github).
 
 I have used pydeck to plot in which municipality fishing boats have unloaded their catch and from which area the area the fish have been caught in.
 
