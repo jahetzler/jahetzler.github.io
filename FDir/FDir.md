@@ -4,10 +4,15 @@
 
 <img src="torsk_map.gif" width="50%" height="50%"/>
 
+Denne animasjon viser "hot spots" for kommersielt fiske etter torsk langs norskekysten. Tidsserie fra 2011-2024 i et heatmap plot. Data hentet fra ERS rapporter fra fiskeridirektorates åpne data. Ikke delt kode til dette prosjktet enda.
+
 ## Python - plotly: Tidsserie for bruttovekt torsk levert til kommuner i norge
 
 <img src="torsk_landed.gif" width="50%" height="50%"/>
+Denne animasjon viser et interaktivt koroplettkart laget med plotly pakkene i python. Det viser distribusjon av bruttovekt torsk levert til norske kommuner av kommersielle fiskebåter over 50 fot fra 2020-2024. 
+Data hentet fra ERS rapporter fra fiskeridirektorates åpne data.
 
+## Eksempel kode: Python - plotly: Tidsserie for bruttovekt torsk levert til kommuner i norge
 ### Libraries
 
 ```
@@ -19,7 +24,6 @@ import geopandas as gpd
 import numpy as np
 import json
 import requests
-import folium
 
 import plotly
 import plotly.express as px
