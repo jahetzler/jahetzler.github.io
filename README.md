@@ -66,7 +66,7 @@ Haplotype network with PopART
 <style>
 .floating-pic {
   position: fixed;
-  bottom: -230px;
+  bottom: -250px;
   right: 20px;
   width: 250px;
   transition: bottom 1.5s;
