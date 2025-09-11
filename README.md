@@ -60,18 +60,18 @@ Haplotype network with PopART
 - [O. obtusa PopART](Obtusa/PopART.md)
 
 <a href="mailto:jahetzler@gmail.com">
-  <img src="/penguin.jpg" alt="email" class="floating-pic">
+  <img src="/Contact.png" alt="Contact" class="floating-pic">
 </a>
 
 <style>
 .floating-pic {
   position: fixed;
-  bottom: -65px;
+  bottom: -120px;
   right: 20px;
   width: 120px;
   transition: bottom 1.5s;
   cursor: pointer;
   z-index: 9999;
 }
-.floating-pic:hover { bottom: 0px; }
+.floating-pic:hover { bottom: 10px; }
 </style>
