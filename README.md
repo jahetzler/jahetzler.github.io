@@ -68,7 +68,7 @@ Haplotype network with PopART
   position: fixed;
   bottom: -120px;
   right: 20px;
-  width: 120px;
+  width: 200px;
   transition: bottom 1.5s;
   cursor: pointer;
   z-index: 9999;
