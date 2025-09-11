@@ -1,0 +1,13 @@
+.floating-pic {
+  position: fixed;
+  bottom: -60px;
+  right: 20px;
+  width: 120px;
+  transition: bottom 0.3s;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.floating-pic:hover {
+  bottom: 20px;
+}
