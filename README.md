@@ -1,6 +1,7 @@
 ## Welcome to my GitHub Reposatory
 
-I'm a biologist, with a master in biosciences from Nord University, and an keen interest in population genetics, bioinformatics, data analysis, map making and datavisualisation.
+I’m a biologist with a focus on population genetics, bioinformatics, and data visualisation.
+Here I share projects that explore open datasets through analysis, mapping, and other forms of data-driven storytelling.
 
 ## Shiny R - Visualisering av partifinansiering (updated autumn 2025)
 - [Partifinansiering](https://jhetzler.shinyapps.io/Partifinansiering)
@@ -18,19 +19,19 @@ General information about universities are gathered from [Database for statistik
 
 ## Python - Pydeck: Fangstdata
 
-Pydeck test to plot large datasets (700K points) on a map. Map showing where fishing boats have unloaded and from where it was caught. Example map with fewer points uploaded as example.
+Pydeck code for exploring plots of large point-to-point datasets (700K points) on a map. Map showing where fishing boats have unloaded and from where it was caught. Example map with fewer points uploaded as an interactive example.
 
 - [FDIR](FDir/pydeck/fangstdata.md)
 
 ## R/Python: Fiskeridirektoratet
 
-Ongoing project from fiskeridirektoratets on ERS raports with records of caught fish. Mainly used for exploring different graphical modules in R and python, but examples could be of use to others. 
+Ongoing project from fiskeridirektoratets on ERS raports with records of caught fish. Mainly used for exploring different graphical modules in R and python, but examples could be of use to others. In this example I looked into cod comercial cod fishing in norway and made a heatmap time series animation where you can see how hot spots for comercial cod fishing in Norway since 2011. 
 
 - [FDIR](FDir/FDir.md)
 
 ## R: Tolkien map from open source data
 
-Trying to make a map over different parts of norway in the style of J.R.R Tolkien utilizing data from the offical Norwegian map database: [Kartkatalogen](https://www.geonorge.no/).
+Trying to soo how far I can push the map making in R, this time I attempt to make a map over different parts of norway in the style of J.R.R Tolkien utilizing data from the offical Norwegian map database: [Kartkatalogen](https://www.geonorge.no/).
 
 Example image, code and data for vestvågøy included here.
 
@@ -38,14 +39,14 @@ Example image, code and data for vestvågøy included here.
 
 ## R: xkcd samling map - Norwegian coast
 
-This is my attempt at making a sampling map with data from my thesis in the style of Randall Munroe's xkcd webcomic maps. 
+This is my attempt at making a in the style of Randall Munroe's xkcd webcomic maps, this particular one is of the sampling locations used for my thesis. 
 This map is made in R and utilises data from the offical Norwegian map database: [Kartkatalogen](https://www.geonorge.no/).
 
 - [xkcd sampling map](xkcdSamplingMap/xkcd_map.md) 
 
 ## Master thesis: population genetics on _Orchomenella obtusa_
 
-This is a step-by-step guide for the bioinformatics for my master thesis. A population genetics study on the scavenging amphipod species _Orchomenella obtusa_ in fjords surrounding Saltstraumen (Skjerstadfjorden and Saltenfjorden). Here I'm trying to determine if the sill separating the fjords are acting as a genetic barrier for the selected species (spoiler alert: it's not), by using amplicon sequences of the mitochondrial gene COI and rRNA gene 18S.
+This is a step-by-step guide for some of the not-so-well documented bioinformatics parts for my master thesis. A population genetics study on the scavenging amphipod species _Orchomenella obtusa_ in fjords surrounding Saltstraumen (Skjerstadfjorden and Saltfjorden). Here I'm trying to determine if the sill separating the fjords are acting as a genetic barrier for the selected species (spoiler alert: it's not), by using amplicon sequences of the mitochondrial gene COI and rRNA gene 18S.
 
 Pipeline for COI and 18S amplicon sequence variant calling: 
 Quality control, adapter trimming, mapping, quality filtering, variant calling and creating multifasta files.
