@@ -73,5 +73,5 @@ Haplotype network with PopART
   cursor: pointer;
   z-index: 9999;
 }
-.floating-pic:hover { bottom: 5px; }
+.floating-pic:hover { bottom: 0px; }
 </style>
