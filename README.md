@@ -2,23 +2,29 @@
 
 I'm a biologist, with a master in biosciences from Nord University, and an keen interest in population genetics, bioinformatics, data analysis, map making and datavisualisation.
 
+## Shiny R - Visualisering av partifinansiering (updated autumn 2025)
+- [Partifinansiering](https://jhetzler.shinyapps.io/Partifinansiering)
+
+This interactive dashboard visualises the financial records of Norwegian political parties from 2017 to 2024 using dynamic Sankey diagrams that make money flows easy to read. The underlying data is drawn from the official Party Funding portal (partifinansiering.no), which publishes reported donations, accounting figures and metadata required under the Political Parties Act.
+
+
 ## Shiny R: SHUe - Statistikk for Høyere Utdanning (updated for spring 2025)
 
 - [SHUe](https://jhetzler.shinyapps.io/SHUe)
 
-Project of mine for visualizing openly available data for higher education in Norway. For simplicity sake the data is subset to include only one univeristy (NORD), but if there is any interest or I have time I might add other universities in Norway.
+Dashboard project for visualizing openly available data for higher education in Norway. For simplicity sake the data is subset to include only one univeristy (NORD), but if there is any interest or I have time I might add other universities in Norway.
 
 General information about universities are gathered from [Database for statistikk om høyere utdanning](https://dbh.hkdir.no/), for applications related to Norwegian Resaerch Council I've used the data available at [data.norge.no](https://data.norge.no/datasets/d23bbbfa-fdad-4dab-b31b-4daadbfa3299), and for EU Horizon projects I've gathered data from [data.europa.eu](https://data.europa.eu/data/datasets/cordis-eu-research-projects-under-horizon-europe-2021-2027?locale=en) 
 
 ## Python - Pydeck: Fangstdata
 
-Testing out pydeck to plot large datasets (700K points) on a map. Map showing where fishing boats have unloaded and from where it was caught. 
+Pydeck test to plot large datasets (700K points) on a map. Map showing where fishing boats have unloaded and from where it was caught. Example map with fewer points uploaded as example.
 
 - [FDIR](FDir/pydeck/fangstdata.md)
 
 ## R/Python: Fiskeridirektoratet
 
-Misc project from fiskeridirektoratets ERS og fangstdata. Mainly used for exploring different graphical modules in R and python, but examples could be of use to others. 
+Ongoing project from fiskeridirektoratets on ERS raports with records of caught fish. Mainly used for exploring different graphical modules in R and python, but examples could be of use to others. 
 
 - [FDIR](FDir/FDir.md)
 
