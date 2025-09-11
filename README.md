@@ -58,7 +58,7 @@ Genetic variability and differential statistics
 Haplotype network with PopART
 - [O. obtusa PopART](Obtusa/PopART.md)
 
-<a href=mailto:jahetzler@gmail.com>
+<a href="mailto:jahetzler@gmail.com">
   <img src="/penguin.jpg" alt="email" class="floating-pic">
 </a>
 
