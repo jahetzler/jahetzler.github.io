@@ -66,12 +66,12 @@ Haplotype network with PopART
 <style>
 .floating-pic {
   position: fixed;
-  bottom: -120px;
+  bottom: -200px;
   right: 20px;
   width: 200px;
   transition: bottom 1.5s;
   cursor: pointer;
   z-index: 9999;
 }
-.floating-pic:hover { bottom: 10px; }
+.floating-pic:hover { bottom: -10px; }
 </style>
