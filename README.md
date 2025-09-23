@@ -5,6 +5,8 @@ Here I share projects that explore open datasets through analysis, mapping, and 
 ## Dash python - fdir turistfiske choropleth (updated september 2025)
 - [Turistfiske](https://jahetzler.pythonanywhere.com/)
 
+Note: this page is hosted on PythonAnywhere for free, so it's only 100s of compute time / 24 h! Will upgrade if anyone shows interest in the page. 
+
 Dashboard contains interactive choropleth map of registered catched/released fish by guided fishing companies in Norway. Choropleth shows summaries for county, municipality and for the company itself. It can also be filtered by species caught and year. 
 
 Data used is available at fiskeridirektoratets webpage [Åpne data: fangst i turistfiske](https://www.fiskeridir.no/statistikk-tall-og-analyse/data-og-statistikk-om-turist--og-fritidsfiske/apne-data-fangst-i-turistfiske)
