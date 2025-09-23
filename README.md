@@ -3,11 +3,11 @@
 I’m a biologist with a focus on population genetics, bioinformatics, and data visualisation.
 Here I share projects that explore open datasets through analysis, mapping, and other forms of data-driven storytelling.
 ## Dash python - fdir turistfiske choropleth (updated september 2025)
--[Turistfiske](https://jahetzler.pythonanywhere.com/)
+- [Turistfiske](https://jahetzler.pythonanywhere.com/)
 
 Dashboard contains interactive choropleth map of registered catched/released fish by guided fishing companies in Norway. Choropleth shows summaries for county, municipality and for the company itself. It can also be filtered by species caught and year. 
 
-Data used is available at fiskeridirektoratets webpage - -[Åpne data: fangst i turistfiske](https://www.fiskeridir.no/statistikk-tall-og-analyse/data-og-statistikk-om-turist--og-fritidsfiske/apne-data-fangst-i-turistfiske)
+Data used is available at fiskeridirektoratets webpage [Åpne data: fangst i turistfiske](https://www.fiskeridir.no/statistikk-tall-og-analyse/data-og-statistikk-om-turist--og-fritidsfiske/apne-data-fangst-i-turistfiske)
 
 ## Shiny R - Visualisering av partifinansiering (updated autumn 2025)
 - [Partifinansiering](https://jhetzler.shinyapps.io/Partifinansiering)
